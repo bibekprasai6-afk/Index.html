@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Valentine 💖</title>
+  <style>
+    /* BODY STYLING */
+    body {
+      height: 100vh;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      font-family: 'Arial', sans-serif;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* CARD STYLING */
+    .card {
+      background: white;
+      padding: 40px 50px;
+      border-radius: 25px;
+      text-align: center;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+      position: relative;
+      z-index: 2;
+      animation: popIn 1s ease;
+    }
+
+    @keyframes popIn {
+      0% {transform: scale(0.5); opacity: 0;}
+      100% {transform: scale(1); opacity: 1;}
+    }
+
+    h1 {
+      margin-bottom: 25px;
+      color: #ff4d6d;
+      font-size: 28px;
+    }
+
+    button {
+      padding: 14px 32px;
+      font-size: 18px;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: 0.3s;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    #yes {
+      background: #ff4d6d;
+      color: white;
+      margin-right: 15px;
+    }
+
+    #no {
+      background: #ddd;
+      position: absolute;
+    }
+
+    /* FLOATING HEARTS */
+    .heart {
+      position: absolute;
+      font-size: 20px;
+      color: #ff4d6d;
+      animation: floatUp linear infinite;
+      pointer-events: none;
+      opacity: 0.8;
+    }
+
+    @keyframes floatUp {
+      0% {transform: translateY(0) scale(1);}
+      50% {transform: translateY(-50px) scale(1.2);}
+      100% {transform: translateY(-200px) scale(1);}
+    }
+
+    /* TYPING EFFECT */
+    .typed-text {
+      font-size: 22px;
+      color: #ff4d6d;
+      margin-top: 20px;
+      min-height: 60px;
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h1>Will you be my girlfriend? 💕</h1>
+    <button id="yes" onclick="yesClicked()">Yes 💖</button>
+    <button id="no">No 💔</button>
+    <div class="typed-text" id="typed"></div>
+  </div>
+
+  <script>
+    const noBtn = document.getElementById("no");
+    const typedDiv = document.getElementById("typed");
+
+    // Move the "No" button
+    function moveButton() {
+      const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+      const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+      noBtn.style.left = x + "px";
+      noBtn.style.top = y + "px";
+    }
+
+    noBtn.addEventListener("mouseover", moveButton);
+    noBtn.addEventListener("touchstart", moveButton);
+
+    // Floating hearts generator
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.classList.add("heart");
+      heart.style.left = Math.random() * window.innerWidth + "px";
+      heart.style.fontSize = Math.random() * 20 + 15 + "px";
+      heart.innerText = "💖";
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 4000);
+    }
+    setInterval(createHeart, 300);
+
+    // Typing effect
+    const messages = [
+      "I can't stop thinking about you...",
+      "Every moment with you is magical ✨",
+      "I love your smile, your laugh, your heart ❤️",
+      "You make my world brighter every single day 🌸",
+      "So... will you be mine forever? 💕"
+    ];
+
+    let msgIndex = 0;
+    let charIndex = 0;
+
+    function typeMessage() {
+      if (msgIndex < messages.length) {
+        if (charIndex < messages[msgIndex].length) {
+          typedDiv.innerHTML += messages[msgIndex].charAt(charIndex);
+          charIndex++;
+          setTimeout(typeMessage, 70);
+        } else {
+          typedDiv.innerHTML += "\n\n";
+          charIndex = 0;
+          msgIndex++;
+          setTimeout(typeMessage, 800);
+        }
+      }
+    }
+    typeMessage();
+
+    // Yes button clicked
+    function yesClicked() {
+      document.body.innerHTML = `
+        <div style="
+          height:100vh;
+          display:flex;
+          justify-content:center;
+          align-items:center;
+          background:linear-gradient(135deg,#ff9a9e,#fad0c4);
+          font-family:Arial;
+          text-align:center;
+          position:relative;
+        ">
+          <h1 style="color:white;font-size:40px; margin-bottom:20px;">
+            Yayyy! 💖🥰<br>
+            Happy Valentine’s Day!
+          </h1>
+          <p style="color:white; font-size:22px; max-width:500px; line-height:1.5;">
+            I promise to make you smile every day, <br>
+            to hold your hand through every storm, <br>
+            and to fill your life with endless love 💕
+          </p>
+        </div>
+      `;
+    }
+  </script>
+
+</body>
+</html>
