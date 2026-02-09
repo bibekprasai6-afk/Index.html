@@ -1,185 +1,230 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Valentine 💖</title>
-  <style>
-    /* BODY STYLING */
-    body {
-      height: 100vh;
-      margin: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
-      font-family: 'Arial', sans-serif;
-      overflow: hidden;
-      position: relative;
-    }
+<meta charset="UTF-8">
+<title>For You ❤️</title>
 
-    /* CARD STYLING */
-    .card {
-      background: white;
-      padding: 40px 50px;
-      border-radius: 25px;
-      text-align: center;
-      box-shadow: 0 15px 40px rgba(0,0,0,0.3);
-      position: relative;
-      z-index: 2;
-      animation: popIn 1s ease;
-    }
+<style>
+/* ================= GLOBAL RESET ================= */
+* {
+  box-sizing: border-box;
+  user-select: none;
+}
 
-    @keyframes popIn {
-      0% {transform: scale(0.5); opacity: 0;}
-      100% {transform: scale(1); opacity: 1;}
-    }
+body {
+  margin: 0;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(-45deg, #ff5f9e, #ff8fb1, #ffc3a0, #ff5f9e);
+  background-size: 400% 400%;
+  animation: bgMove 12s ease infinite;
+}
 
-    h1 {
-      margin-bottom: 25px;
-      color: #ff4d6d;
-      font-size: 28px;
-    }
+/* ================= BACKGROUND ================= */
+@keyframes bgMove {
+  0% {background-position: 0% 50%;}
+  50% {background-position: 100% 50%;}
+  100% {background-position: 0% 50%;}
+}
 
-    button {
-      padding: 14px 32px;
-      font-size: 18px;
-      border: none;
-      border-radius: 30px;
-      cursor: pointer;
-      transition: 0.3s;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-    }
+/* ================= CARD ================= */
+.card {
+  background: rgba(255,255,255,0.92);
+  padding: 45px 60px;
+  border-radius: 30px;
+  text-align: center;
+  box-shadow: 0 40px 100px rgba(0,0,0,0.35);
+  animation: cardEnter 1.4s cubic-bezier(.22,1,.36,1);
+  position: relative;
+  z-index: 10;
+}
 
-    #yes {
-      background: #ff4d6d;
-      color: white;
-      margin-right: 15px;
-    }
+@keyframes cardEnter {
+  0% {opacity:0; transform: scale(0.5) translateY(200px);}
+  100% {opacity:1; transform: scale(1) translateY(0);}
+}
 
-    #no {
-      background: #ddd;
-      position: absolute;
-    }
+h1 {
+  font-size: 30px;
+  color: #ff2f6e;
+  margin-bottom: 25px;
+  text-shadow: 0 0 10px rgba(255,80,120,0.3);
+}
 
-    /* FLOATING HEARTS */
-    .heart {
-      position: absolute;
-      font-size: 20px;
-      color: #ff4d6d;
-      animation: floatUp linear infinite;
-      pointer-events: none;
-      opacity: 0.8;
-    }
+/* ================= BUTTONS ================= */
+button {
+  padding: 14px 34px;
+  font-size: 18px;
+  border: none;
+  border-radius: 40px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+}
 
-    @keyframes floatUp {
-      0% {transform: translateY(0) scale(1);}
-      50% {transform: translateY(-50px) scale(1.2);}
-      100% {transform: translateY(-200px) scale(1);}
-    }
+#yes {
+  background: linear-gradient(135deg,#ff2f6e,#ff6fa1);
+  color: white;
+}
 
-    /* TYPING EFFECT */
-    .typed-text {
-      font-size: 22px;
-      color: #ff4d6d;
-      margin-top: 20px;
-      min-height: 60px;
-      white-space: pre-wrap;
-    }
-  </style>
+#yes:hover {
+  transform: scale(1.12);
+  box-shadow: 0 0 40px rgba(255,80,120,0.8);
+}
+
+#no {
+  background: #eee;
+  position: absolute;
+}
+
+/* ================= TYPING TEXT ================= */
+#typed {
+  margin-top: 30px;
+  font-size: 20px;
+  color: #ff2f6e;
+  min-height: 90px;
+  white-space: pre-wrap;
+}
+
+/* ================= FLOATING HEARTS ================= */
+.heart {
+  position: absolute;
+  font-size: 22px;
+  animation: floatUp 6s linear forwards;
+  opacity: 0.85;
+}
+
+@keyframes floatUp {
+  0% {transform: translateY(0) scale(0.8); opacity:0;}
+  10% {opacity:1;}
+  100% {transform: translateY(-900px) scale(1.6); opacity:0;}
+}
+
+/* ================= FINAL SCENE ================= */
+.final {
+  height:100vh;
+  width:100vw;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+  text-align:center;
+  color:white;
+  animation: fadeIn 2s ease;
+}
+
+@keyframes fadeIn {
+  from {opacity:0;}
+  to {opacity:1;}
+}
+
+.final h1 {
+  font-size: 48px;
+  margin-bottom: 20px;
+}
+
+.final p {
+  font-size: 24px;
+  max-width: 700px;
+  line-height: 1.6;
+}
+</style>
 </head>
+
 <body>
 
-  <div class="card">
-    <h1>Will you be my girlfriend? 💕</h1>
-    <button id="yes" onclick="yesClicked()">Yes 💖</button>
-    <button id="no">No 💔</button>
-    <div class="typed-text" id="typed"></div>
-  </div>
+<div class="card">
+  <h1>Will you be my girlfriend? 💖</h1>
+  <button id="yes">Yes 💕</button>
+  <button id="no">No 💔</button>
+  <div id="typed"></div>
+</div>
 
-  <script>
-    const noBtn = document.getElementById("no");
-    const typedDiv = document.getElementById("typed");
+<script>
+/* ================= HEART GENERATOR ================= */
+function spawnHeart() {
+  const heart = document.createElement("div");
+  heart.className = "heart";
+  heart.innerText = Math.random() > 0.5 ? "💖" : "💕";
+  heart.style.left = Math.random() * window.innerWidth + "px";
+  heart.style.bottom = "-40px";
+  heart.style.fontSize = (16 + Math.random()*24) + "px";
+  document.body.appendChild(heart);
+  setTimeout(() => heart.remove(), 6000);
+}
+setInterval(spawnHeart, 250);
 
-    // Move the "No" button
-    function moveButton() {
-      const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
-      const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
-      noBtn.style.left = x + "px";
-      noBtn.style.top = y + "px";
+/* ================= NO BUTTON (IMPOSSIBLE) ================= */
+const noBtn = document.getElementById("no");
+const yesBtn = document.getElementById("yes");
+
+function escapeNo() {
+  const x = Math.random() * (window.innerWidth - 120);
+  const y = Math.random() * (window.innerHeight - 60);
+  noBtn.style.left = x + "px";
+  noBtn.style.top = y + "px";
+
+  const yRect = yesBtn.getBoundingClientRect();
+  const nRect = noBtn.getBoundingClientRect();
+
+  const angle = Math.atan2(
+    (yRect.top - nRect.top),
+    (yRect.left - nRect.left)
+  ) * 180 / Math.PI;
+
+  noBtn.style.transform = `rotate(${angle}deg)`;
+}
+
+["mouseover","mousedown","touchstart","click"].forEach(e=>{
+  noBtn.addEventListener(e, escapeNo);
+});
+
+/* ================= TYPING LOVE LETTER ================= */
+const lines = [
+  "I don’t know when it happened...",
+  "But somehow, you became my favorite thought 💭",
+  "Your smile feels like home 🏡",
+  "Every moment with you feels like a movie scene 🎬",
+  "So today, I’m asking from my heart ❤️",
+  "Will you choose me?"
+];
+
+let l=0, c=0;
+const typed = document.getElementById("typed");
+
+function type() {
+  if(l < lines.length){
+    if(c < lines[l].length){
+      typed.innerHTML += lines[l][c++];
+      setTimeout(type, 60);
+    } else {
+      typed.innerHTML += "\n\n";
+      l++; c=0;
+      setTimeout(type, 700);
     }
+  }
+}
+type();
 
-    noBtn.addEventListener("mouseover", moveButton);
-    noBtn.addEventListener("touchstart", moveButton);
-
-    // Floating hearts generator
-    function createHeart() {
-      const heart = document.createElement("div");
-      heart.classList.add("heart");
-      heart.style.left = Math.random() * window.innerWidth + "px";
-      heart.style.fontSize = Math.random() * 20 + 15 + "px";
-      heart.innerText = "💖";
-      document.body.appendChild(heart);
-
-      setTimeout(() => {
-        heart.remove();
-      }, 4000);
-    }
-    setInterval(createHeart, 300);
-
-    // Typing effect
-    const messages = [
-      "I can't stop thinking about you...",
-      "Every moment with you is magical ✨",
-      "I love your smile, your laugh, your heart ❤️",
-      "You make my world brighter every single day 🌸",
-      "So... will you be mine forever? 💕"
-    ];
-
-    let msgIndex = 0;
-    let charIndex = 0;
-
-    function typeMessage() {
-      if (msgIndex < messages.length) {
-        if (charIndex < messages[msgIndex].length) {
-          typedDiv.innerHTML += messages[msgIndex].charAt(charIndex);
-          charIndex++;
-          setTimeout(typeMessage, 70);
-        } else {
-          typedDiv.innerHTML += "\n\n";
-          charIndex = 0;
-          msgIndex++;
-          setTimeout(typeMessage, 800);
-        }
-      }
-    }
-    typeMessage();
-
-    // Yes button clicked
-    function yesClicked() {
-      document.body.innerHTML = `
-        <div style="
-          height:100vh;
-          display:flex;
-          justify-content:center;
-          align-items:center;
-          background:linear-gradient(135deg,#ff9a9e,#fad0c4);
-          font-family:Arial;
-          text-align:center;
-          position:relative;
-        ">
-          <h1 style="color:white;font-size:40px; margin-bottom:20px;">
-            Yayyy! 💖🥰<br>
-            Happy Valentine’s Day!
-          </h1>
-          <p style="color:white; font-size:22px; max-width:500px; line-height:1.5;">
-            I promise to make you smile every day, <br>
-            to hold your hand through every storm, <br>
-            and to fill your life with endless love 💕
-          </p>
-        </div>
-      `;
-    }
-  </script>
+/* ================= YES CLICK (FINAL SCENE) ================= */
+yesBtn.onclick = () => {
+  document.body.innerHTML = `
+  <div class="final">
+    <h1>She said YES 💖🥰</h1>
+    <p>
+      From this moment on,<br>
+      I promise laughter on hard days,<br>
+      warmth in cold moments,<br>
+      and a love that only grows stronger with time ❤️
+    </p>
+  </div>`;
+};
+</script>
 
 </body>
 </html>
+
